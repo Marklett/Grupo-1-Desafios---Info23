@@ -86,7 +86,7 @@ def busquedaInmueble(n1):
     i = 0
     print("La lista de propiedades en el rango de valor ingresado es: \n")
     for e in inmobiliaria:
-        if(calculoPrecio(i) <= n1):
+        if((calculoPrecio(i) <= n1) & (inmobiliaria[i]['estado'] != 'Vendido')):
             inmobiliaria[i]['precio'] = calculoPrecio(i)
             print(inmobiliaria[i])
         i = i + 1
