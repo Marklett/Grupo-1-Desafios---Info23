@@ -44,7 +44,9 @@ print("Máximo Saleh, Marighetti José Juan, Carrazco Enzo, Brunelli Oscar Ariel
 print("Echaide Silvina, Luxen Lucas Sebastian, Mendoza Luciano Leonel, Luna Maximiliano\n")
 print("--------------------------------------------------------------------------------------\n")
 
-inmuebles = [{'año': 2010, 'metros': 150, 'habitaciones': 4, 'garaje': True, 'zona': 'C', 'estado': 'Disponible'},
+#lista de muestra, se puede probar con otra lista supongo
+
+inmobiliaria = [{'año': 2010, 'metros': 150, 'habitaciones': 4, 'garaje': True, 'zona': 'C', 'estado': 'Disponible'},
 {'año': 2016, 'metros': 80, 'habitaciones': 2, 'garaje': False, 'zona': 'B', 'estado': 'Reservado'},
 {'año': 2000, 'metros': 180, 'habitaciones': 4, 'garaje': True, 'zona': 'A', 'estado': 'Disponible'},
 {'año': 2015, 'metros': 95, 'habitaciones': 3, 'garaje': True, 'zona': 'B', 'estado': 'Vendido'},
@@ -52,30 +54,43 @@ inmuebles = [{'año': 2010, 'metros': 150, 'habitaciones': 4, 'garaje': True, 'z
 
 '''
 Crear tres funciones, una para el punto uno, otra para el dos, y una ultima para el tres. Necesitariamos una funcion principal que ordene las otras tres y solicite
-al usuario que quiere hacer
+al usuario que quiere hacer.
 '''
-#def appInmobiliaria(input):
 
-def editarInmuebles():
-    print(1)
-def cambiarEstadoInmueble():
-    print(2)
-def busquedaInmueble():
-    print(3)
+#declaracion de la funcion principal que llama a las demas
 
 def inmobiliariaApp():
-    accion = 0
-    while(accion != 9):
-        accion = int(input("Ingrese la accion que desea realizar, siendo: \n1- Agregar, editar y eliminar inmuebles \n2- Cambiar el estado de un inmueble \n3- Hacer búsqueda de inmuebles en función de un presupuesto. \n"))
+    seguir = 1
+    while(seguir != 2):
+        accion = int(input("\nIngrese la accion que desea realizar, siendo: \n1- Agregar, editar y eliminar inmuebles \n2- Cambiar el estado de un inmueble \n3- Hacer búsqueda de inmuebles en función de un presupuesto. \n"))
         if(accion == 1):
             editarInmuebles()
         elif(accion ==2):
             cambiarEstadoInmueble()
-        elif(accion ==3):
-            busquedaInmueble()
+        elif(accion == 3):
+            numero = int(input("ingresa un monto: \n$"))
+            busquedaInmueble(numero)
         else:
             print("No ingresaste una opcion valida, ingrese una opcion valida, para salir ingrese 9: \n")
+        seguir = int(input("\n¿Quiere realizar otra operación? 1 - SI, 2 - NO: \n"))
     print("Gracias por usar nuestra app. Hasta pronto...")
 
-inmobiliariaApp()
+#funcion para calcular el precio de las propiedades
 
+def calculoPrecio(n1):
+    return(inmobiliaria[n1]['metros'] * 100) + (inmobiliaria[n1]['habitaciones'] * 500) + (inmobiliaria[n1]['garaje'] * 1500) * (1 - (2023 - inmobiliaria[n1]['año']) / 100)
+
+#funcion para buscar inmuebles por valor(punto 3)
+
+def busquedaInmueble(n1):
+    i = 0
+    print("La lista de propiedades en el rango de valor ingresado es: \n")
+    for e in inmobiliaria:
+        if(calculoPrecio(i) <= n1):
+            inmobiliaria[i]['precio'] = calculoPrecio(i)
+            print(inmobiliaria[i])
+        i = i + 1
+
+#llamado a la funcion principal
+
+inmobiliariaApp()
