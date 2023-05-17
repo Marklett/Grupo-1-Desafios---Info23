@@ -78,18 +78,26 @@ def inmobiliariaApp():
 #funcion para calcular el precio de las propiedades
 
 def calculoPrecio(n1):
-    return(inmobiliaria[n1]['metros'] * 100) + (inmobiliaria[n1]['habitaciones'] * 500) + (inmobiliaria[n1]['garaje'] * 1500) * (1 - (2023 - inmobiliaria[n1]['año']) / 100)
+    if(inmobiliaria[n1]['zona'] == 'A'):
+        return(inmobiliaria[n1]['metros'] * 100) + (inmobiliaria[n1]['habitaciones'] * 500) + (inmobiliaria[n1]['garaje'] * 1500) * (1 - (2023 - inmobiliaria[n1]['año']) / 100)
+    elif(inmobiliaria[n1]['zona'] == 'B'):
+        return(((inmobiliaria[n1]['metros'] * 100) + (inmobiliaria[n1]['habitaciones'] * 500) + (inmobiliaria[n1]['garaje'] * 1500) * (1 - (2023 - inmobiliaria[n1]['año']) / 100)) * 1.5)
+    elif(inmobiliaria[n1]['zona'] == 'C'):
+        return(((inmobiliaria[n1]['metros'] * 100) + (inmobiliaria[n1]['habitaciones'] * 500) + (inmobiliaria[n1]['garaje'] * 1500) * (1 - (2023 - inmobiliaria[n1]['año']) / 100)) * 2)
+
 
 #funcion para buscar inmuebles por valor(punto 3)
 
 def busquedaInmueble(n1):
     i = 0
-    print("La lista de propiedades en el rango de valor ingresado es: \n")
+    propiedades = 0
     for e in inmobiliaria:
         if((calculoPrecio(i) <= n1) & (inmobiliaria[i]['estado'] != 'Vendido')):
             inmobiliaria[i]['precio'] = calculoPrecio(i)
             print(inmobiliaria[i])
+            propiedades = propiedades + 1
         i = i + 1
+    print(f"La busqueda termino con {propiedades} propiedades encontadas.")
 
 #llamado a la funcion principal
 
