@@ -52,14 +52,32 @@ inmuebles = [{'año': 2010, 'metros': 150, 'habitaciones': 4, 'garaje': True, 'z
 
 print(inmuebles)
 
+print(inmuebles[2]['año'])
+
 '''
 Crear tres funciones, una para el punto uno, otra para el dos, y una ultima para el tres. Necesitariamos una funcion principal que ordene las otras tres y solicite
 al usuario que quiere hacer
 '''
-def appInmobiliaria(input)
+#def appInmobiliaria(input):
 
-def editarInmuebles(list**)
+accion = 0
 
-def cambiarEstadoImueble(list**)
+def editarInmuebles(inmuebles):
+    print(1)
+def cambiarEstadoInmueble(inmuebles):
+    print(2)
+def busquedaInmueble(inmuebles):
+    print(3)
 
-def busquedaInmueble(list**)
+while(accion != 9):
+    accion = int(input("Ingrese la accion que desea realizar, siendo: \n1- Agregar, editar y eliminar inmuebles \n2- Cambiar el estado de un inmueble \n3- Hacer búsqueda de inmuebles en función de un presupuesto. \n"))
+    if(accion == 1):
+        editarInmuebles()
+    elif(accion ==2):
+        cambiarEstadoInmueble()
+    elif(accion ==3):
+        busquedaInmueble()
+    else:
+        print("No ingresaste una opcion valida, ingrese una opcion valida, para salir ingrese 9:")
+print("Gracias por usar nuestra app")
+
