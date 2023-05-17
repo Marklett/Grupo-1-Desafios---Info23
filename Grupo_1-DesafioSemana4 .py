@@ -44,3 +44,22 @@ print("Máximo Saleh, Marighetti José Juan, Carrazco Enzo, Brunelli Oscar Ariel
 print("Echaide Silvina, Luxen Lucas Sebastian, Mendoza Luciano Leonel, Luna Maximiliano\n")
 print("--------------------------------------------------------------------------------------\n")
 
+inmuebles = [{'año': 2010, 'metros': 150, 'habitaciones': 4, 'garaje': True, 'zona': 'C', 'estado': 'Disponible'},
+{'año': 2016, 'metros': 80, 'habitaciones': 2, 'garaje': False, 'zona': 'B', 'estado': 'Reservado'},
+{'año': 2000, 'metros': 180, 'habitaciones': 4, 'garaje': True, 'zona': 'A', 'estado': 'Disponible'},
+{'año': 2015, 'metros': 95, 'habitaciones': 3, 'garaje': True, 'zona': 'B', 'estado': 'Vendido'},
+{'año': 2008, 'metros': 60, 'habitaciones': 2, 'garaje': False, 'zona': 'C', 'estado': 'Disponible'}]
+
+print(inmuebles)
+
+'''
+Crear tres funciones, una para el punto uno, otra para el dos, y una ultima para el tres. Necesitariamos una funcion principal que ordene las otras tres y solicite
+al usuario que quiere hacer
+'''
+def appInmobiliaria(input)
+
+def editarInmuebles(list**)
+
+def cambiarEstadoImueble(list**)
+
+def busquedaInmueble(list**)
