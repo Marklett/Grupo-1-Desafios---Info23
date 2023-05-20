@@ -41,7 +41,7 @@ print("-------------------------------------------------------------------------
 print("--------------------------Desafío 4: La inmobiliaria----------------------------------- \n")
 print("GRUPO 1- INTEGRANTES: Mercado Alejandro, Quiroz Agustín, Pedro Galarza, Maciel Enzo\n")
 print("Máximo Saleh, Marighetti José Juan, Carrazco Enzo, Brunelli Oscar Ariel, Fernández Braian\n")
-print("Echaide Silvina, Luxen Lucas Sebastian, Mendoza Luciano Leonel, Luna Maximiliano\n")
+print("------------------Luxen Lucas Sebastian, Mendoza Luciano Leonel------------------------\n")
 print("--------------------------------------------------------------------------------------\n")
 
 #lista de muestra, se puede probar con otra lista que tenga el mismo formato, o bien, partir de una lista vacia
@@ -64,12 +64,12 @@ def inmobiliariaApp(dic):
         elif(accion ==2):
             cambiarEstadoInmueble(dic)
         elif(accion == 3):
-            numero = int(input("ingresa un monto: \n$"))
-            busquedaInmueble(dic, numero)
+            presupuesto = int(input("ingresa un monto: \n$"))
+            busquedaInmueble(dic, presupuesto)
         elif(accion == 4):
             mostrarListaInmuebles(dic)
         else:
-            print("No ingresaste una opcion valida, ingrese una opcion valida, para salir ingrese 9: \n")
+            print("No ingresaste una opcion valida, ingrese una opcion valida.\n")
         seguir = int(input("\n¿Quiere realizar otra operación? 1 - SI, 2 - NO: \n"))
     print("---------------------------------------------------------------------------------------")
     print("------------------Gracias por usar nuestra app. Hasta pronto...------------------------")
@@ -148,7 +148,7 @@ def editInmueble(dic):
         print(f"{i + 1}) {dic[i]}")
         i = i + 1
     seleccion = int(input("Elija el numero de inmueble al que desea cambiar el estado: "))-1
-    print(f"El inmueble seleccionado es la siguiente: \n {dic[seleccion]}")
+    print(f"El inmueble seleccionado es el siguiente: \n {dic[seleccion]}")
     atributo = int(input("Elija el atributo del inmueble que desea editar: \n1 - Año\n2 - Metros \n3 - Habitaciones \n4 - Garaje \n5 - Zona \n"))
     if(atributo == 1):
         anioq = int(input("Ingrese el nuevo valor de 'año': \n"))
@@ -200,7 +200,7 @@ def eliminarInmueble(dic):
         print(f"{j + 1}) {dic[j]}")
         j = j + 1
     opcionEliminar = int(input("Elija el numero del inmueble que desea eliminar: "))-1
-    print(f"El inmueble seleccionado es la siguiente: \n {dic[opcionEliminar]}")
+    print(f"El inmueble seleccionado es el siguiente: \n {dic[opcionEliminar]}")
     confirmarEliminar = int(input("Esta seguro de que quiere eliminar el inmueble?. 1 - Si, 2 - No: \n"))
     if(confirmarEliminar == 1):
         del dic[opcionEliminar]
@@ -215,7 +215,7 @@ def eliminarInmueble(dic):
 #funcion general para agregar, editar y borrar inmuebles
 
 def editarInmuebles(dic):
-    opcion = int(input("\nIngrese la accion que desea realizar, siendo: \n1- Agregar inmueble \n2- Editar inmueble \n3- Eliminar inmueble"))
+    opcion = int(input("\nIngrese la accion que desea realizar, siendo: \n1- Agregar inmueble \n2- Editar inmueble \n3- Eliminar inmueble\n"))
     if(opcion == 1):
         agregarInmueble(dic)
     elif(opcion == 2):
