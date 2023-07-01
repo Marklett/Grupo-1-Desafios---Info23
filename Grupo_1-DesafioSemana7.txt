@@ -1,0 +1,141 @@
+-- Desafío 7: Scripts de SQL – Blog
+-- GRUPO 1- INTEGRANTES: Mercado Alejandro, Quiroz Agustín, Pedro Galarza, Maciel Enzo
+-- Máximo Saleh, Marighetti José Juan, Carrazco Enzo, Brunelli Oscar Ariel, Fernández Braian
+-- Echaide Silvina, Luxen Lucas Sebastian, Mendoza Luciano Leonel, Luna Maximiliano
+-- Paso del modelo lógico en diagrama Chen a Tablas mediante comandos de SQL. Creación de tablas con claves primarias y foráneas.
+
+CREATE TABLE USUARIO (
+  ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  nombre VARCHAR(50),
+  apellido VARCHAR(50),
+  telefono VARCHAR(15),
+  estado VARCHAR(20),
+  fecha_creacion DATE,
+  avatar VARCHAR(100),
+  es_publico BOOLEAN,
+  es_colaborador BOOLEAN,
+  es_admin BOOLEAN
+) AUTO_INCREMENT = 1;
+
+CREATE TABLE ARTICULO (
+  ID INT AUTO_INCREMENT PRIMARY KEY,
+  id_usuario INT,
+  titulo VARCHAR(100),
+  resumen TEXT,
+  contenido TEXT,
+  fecha_publicacion DATE,
+  estado VARCHAR(20),
+  imagen BLOB,
+  FOREIGN KEY (id_usuario) REFERENCES USUARIO(ID)
+) AUTO_INCREMENT = 1;
+
+CREATE TABLE COMENTARIO (
+  ID INT AUTO_INCREMENT PRIMARY KEY,
+  ID_ARTICULO INT,
+  ID_USUARIO INT,
+  contenido VARCHAR(255),
+  fecha_hora DATETIME,
+  estado BOOL,
+  FOREIGN KEY (ID_ARTICULO) REFERENCES ARTICULO(ID),
+  FOREIGN KEY (ID_USUARIO) REFERENCES USUARIO(ID)
+) AUTO_INCREMENT = 1;
+
+CREATE TABLE CATEGORIA (
+  ID INT AUTO_INCREMENT PRIMARY KEY,
+  ID_CATEGORIA INT,
+  nombre VARCHAR(50),
+  descripcion TEXT,
+  imagen BLOB,
+  estado VARCHAR(20),
+  FOREIGN KEY (ID_CATEGORIA) REFERENCES CATEGORIA(ID)
+);
+
+CREATE TABLE CATEGORIA_ARTICULO (
+  id_articulo INT,
+  id_categoria INT,
+  FOREIGN KEY (id_articulo) REFERENCES ARTICULO(ID),
+  FOREIGN KEY (id_categoria) REFERENCES CATEGORIA(ID)
+);
+
+-- Insertar 1 usuario con rol de “ADMIN”
+INSERT INTO USUARIO (nombre, apellido, telefono, estado, fecha_creacion, avatar, es_publico, es_colaborador, es_admin) 
+VALUES ('Admin', 'Admin', '123456789', 'activo', '2023-01-01', 'avatar_admin.jpg', false, false, true);
+
+-- Insertar 4 usuarios con rol de “COLABORADOR”
+INSERT INTO USUARIO (nombre, apellido, telefono, estado, fecha_creacion, avatar, es_publico, es_colaborador, es_admin)
+VALUES ('Colaborador1', 'Apellido1', '987654321', 'activo', '2023-01-02', 'avatar_colab1.jpg', false, true, false);
+
+INSERT INTO USUARIO (nombre, apellido, telefono, estado, fecha_creacion, avatar, es_publico, es_colaborador, es_admin)
+VALUES ('Colaborador2', 'Apellido2', '567890123', 'activo', '2023-01-03', 'avatar_colab2.jpg', false, true, false);
+
+INSERT INTO USUARIO (nombre, apellido, telefono, estado, fecha_creacion, avatar, es_publico, es_colaborador, es_admin)
+VALUES ('Colaborador3', 'Apellido3', '432109876', 'activo', '2023-01-04', 'avatar_colab3.jpg', false, true, false);
+
+INSERT INTO USUARIO (nombre, apellido, telefono, estado, fecha_creacion, avatar, es_publico, es_colaborador, es_admin)
+VALUES ('Colaborador4', 'Apellido4', '210987654', 'activo', '2023-01-05', 'avatar_colab4.jpg', false, true, false);
+
+
+-- Insertar 5 usuarios con rol de “PÚBLICO”
+INSERT INTO USUARIO (nombre, apellido, telefono, estado, fecha_creacion, avatar, es_publico, es_colaborador, es_admin)
+VALUES ('Publico1', 'Apellido1', '123456789', 'activo', '2023-01-06', 'avatar_publico1.jpg', true, false, false);
+
+INSERT INTO USUARIO (nombre, apellido, telefono, estado, fecha_creacion, avatar, es_publico, es_colaborador, es_admin)
+VALUES ('Publico2', 'Apellido2', '987654321', 'activo', '2023-01-07', 'avatar_publico2.jpg', true, false, false);
+
+INSERT INTO USUARIO (nombre, apellido, telefono, estado, fecha_creacion, avatar, es_publico, es_colaborador, es_admin)
+VALUES ('Publico3', 'Apellido3', '567890123', 'activo', '2023-01-08', 'avatar_publico3.jpg', true, false, false);
+
+INSERT INTO USUARIO (nombre, apellido, telefono, estado, fecha_creacion, avatar, es_publico, es_colaborador, es_admin)
+VALUES ('Publico4', 'Apellido4', '432109876', 'activo', '2023-01-09', 'avatar_publico4.jpg', true, false, false);
+
+INSERT INTO USUARIO (nombre, apellido, telefono, estado, fecha_creacion, avatar, es_publico, es_colaborador, es_admin)
+VALUES ('Publico5', 'Apellido5', '123456789', 'activo', '2023-01-10', 'avatar_publico5.jpg', true, false, false);
+
+-- Agregar el comando necesario para actualizar el rol a admin de uno de los usuarios agregado con rol de colaborador (en este caso colaborador con ID 2).
+
+UPDATE USUARIO
+SET es_colaborador = false,
+    es_admin = true
+WHERE ID = 2;
+
+-- - Agregar el comando necesario que introduzca en la tabla artículo, 3 artículos con estado TRUE y uno con estado FALSE. Donde el campo estado en todas las tablas es Booleano.
+
+INSERT INTO ARTICULO (id_usuario, titulo, resumen, contenido, fecha_publicacion, estado)
+VALUES (1, 'Artículo 1', 'Resumen del artículo 1', 'Contenido del artículo 1', '2023-01-01', true);
+
+INSERT INTO ARTICULO (id_usuario, titulo, resumen, contenido, fecha_publicacion, estado)
+VALUES (2, 'Artículo 2', 'Resumen del artículo 2', 'Contenido del artículo 2', '2023-01-02', true);
+
+INSERT INTO ARTICULO (id_usuario, titulo, resumen, contenido, fecha_publicacion, estado)
+VALUES (3, 'Artículo 3', 'Resumen del artículo 3', 'Contenido del artículo 3', '2023-01-03', true);
+
+INSERT INTO ARTICULO (id_usuario, titulo, resumen, contenido, fecha_publicacion, estado)
+VALUES (4, 'Artículo 4', 'Resumen del artículo 4', 'Contenido del artículo 4', '2023-01-04', false);
+
+-- Agregar el comando necesario para eliminar el artículo que tenga estado FALSE
+DELETE FROM ARTICULO WHERE estado = false;
+
+-- Insertar 3 comentarios al primer artículo (NOW() permite establecer el horario en el momento en que se realiza la modificación)
+INSERT INTO COMENTARIO (ID_ARTICULO, ID_USUARIO, contenido, fecha_hora, estado)
+VALUES (1, 1, 'Comentario 1 del primer artículo', NOW(), true);
+
+INSERT INTO COMENTARIO (ID_ARTICULO, ID_USUARIO, contenido, fecha_hora, estado)
+VALUES (1, 2, 'Comentario 2 del primer artículo', NOW(), true);
+
+INSERT INTO COMENTARIO (ID_ARTICULO, ID_USUARIO, contenido, fecha_hora, estado)
+VALUES (1, 3, 'Comentario 3 del primer artículo', NOW(), true);
+
+-- Insertar 2 comentarios al segundo artículo
+INSERT INTO COMENTARIO (ID_ARTICULO, ID_USUARIO, contenido, fecha_hora, estado)
+VALUES (2, 4, 'Comentario 1 del segundo artículo', NOW(), true);
+
+INSERT INTO COMENTARIO (ID_ARTICULO, ID_USUARIO, contenido, fecha_hora, estado)
+VALUES (2, 5, 'Comentario 2 del segundo artículo', NOW(), true);
+
+-- Agregar el comando necesario para listar todos los artículos que tengan comentarios, mostrando el título del artículo, la fecha_publicación del artículo, el nombre del usuario que realizo el comentario y la fecha_hora que realizó dicho comentario, agrupados por artículos. (Decidimos no crear una nueva columna para listarlos, sino una consulta uniendo los datos solicitados y mostrándolos de manera agrupada según el ID del artículo)
+
+SELECT a.titulo, a.fecha_publicacion, GROUP_CONCAT(u.nombre) AS nombres_usuarios, GROUP_CONCAT(c.fecha_hora) AS fechas_comentarios
+FROM ARTICULO a
+JOIN COMENTARIO c ON a.ID = c.ID_ARTICULO
+JOIN USUARIO u ON c.ID_USUARIO = u.ID
+GROUP BY a.ID, a.titulo, a.fecha_publicacion
