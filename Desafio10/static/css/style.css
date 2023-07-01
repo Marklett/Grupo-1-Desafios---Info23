@@ -1,0 +1,138 @@
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: rgb(193, 183, 201);
+}
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    color: #000000;
+    text-shadow: 4px 4px 2px rgba(255, 255, 255, 0.6);
+  }
+  
+  p {
+    color: #292727;
+    font-size: 110%;
+
+  }
+  
+  /* Estilos para home.html */
+
+  .img-responsive {
+    width: 50%;
+    height: auto;  
+    box-shadow: 11px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 11px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 11px 10px 5px 0px rgba(0,0,0,0.75);
+
+  }
+  
+  /* Estilos para login.html */
+  .login-form {
+    margin-top: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 10px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+  }
+  
+  button[type="submit"] {
+    padding: 8px 12px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .alert {
+    padding: 10px;
+    background-color: #f0ad4e;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para login_exitoso.html */
+  .login-success {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .login-success h2 {
+    color: #5cb85c;
+    margin-bottom: 20px;
+  }
+  
+  .back-button {
+    padding: 8px 12px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: center;
+  }
+  
+  /* Estilos para el botón primario (color azul) */
+  .btn-primary {
+    color: #fff;
+    background-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilos para el botón secundario (color gris) */
+  .btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #545b62;
+  }
+  
+  /* Estilos para el botón de cerrar sesión (color rojo) */
+  .btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+  }
+  
+  /* Contenedor para alinear los botones horizontalmente */
+  .button-container {
+    margin-top: 20px;
+  }

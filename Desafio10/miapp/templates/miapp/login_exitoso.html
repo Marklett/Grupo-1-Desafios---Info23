@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login exitoso</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Login Exitoso</h1>
+    <p>Bienvenido, {{ user.username }}!</p>
+    <a href="{% url 'home' %}">Ir al inicio</a>
+    <a href="{% url 'logout' %}">Cerrar sesión</a>
+</body>
+</html>

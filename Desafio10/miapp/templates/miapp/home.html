@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Página principal</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Desafío 10 Django startproject - Grupo 1</h1>
+    <p>GRUPO 1- INTEGRANTES: Mercado Alejandro, Quiroz Agustín, Pedro Galarza, Fernández Braian. Intentamos contactar con el resto del grupo que se suma pero no tuvimos noticias, por eso presentamos como estabamos. <br> 
+    Creamos una estructura de página que simula un login, se pueden crear usuarios nuevos y loguearse
+    con ellos, al loguearse se podrá cerrar sesión. Los usuarios nuevos quedan guardados en la base de datos. Si se ingresa erróneamente tres veces un usuario y contraseña se vuelve a la pagina principal. Usamos SQLite</p>
+    <p><img src="{% static 'miapp/imagen1.jpg' %}" alt="Mi imagen" class="img-responsive"></p>
+    {% if user.is_authenticated %}
+        <p>  <br> <br>Bienvenido, {{ user.username }}!</p>
+        <div class="button-container">
+        <a href="{% url 'logout' %}" class="btn btn-danger">Cerrar sesión</a>
+    {% else %}
+        <a href="{% url 'login' %}" class="btn btn-primary">Iniciar sesión</a>
+        <a href="{% url 'register' %}" class="btn btn-secondary">Registrarse</a>
+    {% endif %}
+        </div>
+</body>
+</html>
