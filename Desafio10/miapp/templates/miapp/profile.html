@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="Blog" content="Blog de Grupo 1" />
         <meta name="author" content="Alejandro Mercado" />
-        <title>Colaborador</title>
+        <title>Perfil</title>
         {% load static %}
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
@@ -16,12 +16,23 @@
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="#!">¡Bienvenido Colaborador!</a>
+                <a class="navbar-brand" href="#!">Perfil de {{ user.username }}</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <h1>{{ user.username }}, ya eres un colaborador, ahora podrás crear, editar, y eliminar artículos ¡se prudente!</h1>
                 </div>
-    <a href="{% url 'home' %}">Ir al inicio</a>
-    <a href="{% url 'logout' %}">Cerrar sesión</a>
-</body>
+            </div> 
+        </nav>
+        <h1>Detalles del perfil:</h1>
+        <ul>
+            <li>Nombre: {{ user.first_name }}</li>
+            <li>Apellido: {{ user.last_name }}</li>
+            <li>Correo electrónico: {{ user.email }}</li>
+            <li>Fecha de registro: {{ user.registration_date }}</li>
+            <li>Tipo de cuenta: {{ user.profile }}</li>
+            <li>Id: {{ user.id }}</li>
+            <li>Avatar: {{ user.avatar }}</li>
+            <li>Status: {{ user.status }}</li>
+            <li>Online: {{ user.online }}</li>
+        </ul>
+    </body>
 </html>
